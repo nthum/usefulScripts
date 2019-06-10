@@ -1,0 +1,10 @@
+$secpasswd = ConvertTo-SecureSTring "password" -AsPlainText -Force
+$secuname = ConvertTo-SecureSTring "domain\userName"  -AsPlainText -Force
+$cred=New-Object System.Management.Automation.PSCredential ($secuname, $secpasswd)
+$path = "path"
+#Invoke-Command should have -computername with -credential
+#Invoke-Command -Credential $cred -ScriptBlock {Remove-Item $path}
+
+$job = Start-Job { Remove-Item -Path $path -force } -cred $cred 
+Wait-Job $job
+Receive-Job $job
