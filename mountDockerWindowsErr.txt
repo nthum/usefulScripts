@@ -1,0 +1,12 @@
+First make sure to delete the broken container's volume
+  docker rm -v <container_name>
+Update: The steps below may work without needing to delete volumes first.
+  Open Docker Settings
+  Go to the "Shared Drives" tab
+  Click on the "Reset Credentials..." link on the bottom of the window
+  Re-Share the drives you want to use with Docker
+  You should be prompted to enter your username/password
+  Click "Apply"
+  Go to the "Reset" tab
+  Click "Restart Docker"
+  Re-create your containers/volumes
